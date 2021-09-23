@@ -1,0 +1,16 @@
+.chatbox::-webkit-scrollbar{
+    width: 11px;
+    height: 11px;
+}
+.chatbox::-webkit-scrollbar-thumb{
+    background: #15FFF1;
+    border-radius: 0px;
+}
+.chatbox::-webkit-scrollbar-thumb:hover{
+    background: 15FFF1;
+}
+.chatbox::-webkit-scrollbar-track{
+    background: #0B5D58;
+    border-radius: 0px;
+    box-shadow: inset 0px 0px 0px 0px #0B5D58;
+}

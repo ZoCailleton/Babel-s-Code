@@ -1,0 +1,155 @@
+.box-message {
+    position: relative;
+    user-select: none;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transform-origin: center left;
+    &.hit {
+        animation-name: hit;
+    }
+    .glitch {
+        width: 100%;
+        max-width: 450px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        object-fit: contain;
+        animation-name: glitch;
+        animation-duration: 500ms;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        display: none;
+    }
+    &.disabled {
+        opacity: 0.25;
+        transition-delay: 400ms;
+        .glitch {
+            display: block;
+        }
+    }
+    .eye {
+        width: 30px;
+        height: 30px;
+        background-image: url('../../assets/eye/sprite-eye.svg');
+        background-size: 400%;
+        background-repeat: repeat-x;
+        background-position: left center;
+        margin-top: 10px;
+        animation-name: eye;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(3, end);
+    }
+}
+
+@keyframes hit {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes eye {
+    to {
+        background-position: right center;
+    }
+}
+
+@keyframes glitch {
+    49% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    51% {
+        opacity: 0;
+    }
+    98% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.box-auteur-message {
+    width: auto;
+    max-width: 500px;
+    margin-top: 25px;
+    border-bottom: 1px solid #15FFF1;
+    display: flex;
+    position: relative;
+    &::after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        background-image: url('../../assets/side-message.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        left: -2px;
+        top: 0;
+    }
+    p {
+        background-color: #0B5D58;
+        padding: 5px 15px;
+        box-sizing: border-box;
+        border: 1px solid #15FFF1;
+        border-bottom: 0;
+        color: #15FFF1;
+        word-break: break-all;
+    }
+}
+
+.fromClient {
+    .box-auteur-message {
+        border-bottom: 1px solid #E35C5E;
+        flex-direction: row-reverse;
+        &::after {
+            background-image: url('../../assets/side-message-user.svg');
+            left: auto;
+            right: -1px;
+        }
+        p {
+            background-color: #532425;
+            border: 1px solid #E35C5E;
+            border-bottom: 0;
+            color: #E35C5E;
+        }
+    }
+    .glitch {
+        left: auto;
+        right: 0;
+    }
+}
+
+.box-content-message {
+    min-width: 160px;
+    max-width: 500px;
+    background-color: #502728;
+    margin-top: 10px;
+    padding: 10px;
+    position: relative;
+    font-size: 20px;
+    color: #15FFF1;
+    word-break: break-all;
+}
+
+.fromClient {
+    .box-content-message {
+        background-color: #0B5D58;
+    }
+}

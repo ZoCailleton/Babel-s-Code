@@ -1,0 +1,27 @@
+.input-login {
+    background-image: url('../../assets/terminal.svg');
+    background-size: auto 40%;
+    background-repeat: no-repeat;
+    background-position: 0% center;
+    background-color: transparent;
+    padding: 10px 22px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #15FFF1;
+    font-size: 18px;
+    color: #15FFF1;
+    outline: none;
+    &::placeholder {
+        color: #15FFF1
+    }
+}
+
+.btn-login {
+    width: 100%;
+    background-color: #5A2727;
+    margin-top: 15px;
+    padding: 15px 25px;
+    font-size: 18px;
+    color: #E35C5E;
+    font-family: 'VTF';
+    cursor: pointer;
+}

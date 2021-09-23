@@ -1,0 +1,28 @@
+.list-users {
+    height: calc(50vh);
+    padding-right: 20px;
+    overflow-y: auto;
+}
+
+.list-users::-webkit-scrollbar{
+    width: 11px;
+    height: 11px;
+}
+.list-users::-webkit-scrollbar-thumb{
+    background: #15FFF1;
+    border-radius: 0px;
+}
+.list-users::-webkit-scrollbar-thumb:hover{
+    background: 15FFF1;
+}
+.list-users::-webkit-scrollbar-track{
+    background: #0B5D58;
+    border-radius: 0px;
+    box-shadow: inset 0px 0px 0px 0px #0B5D58;
+}
+
+.heading-list-users {
+    font-size: 28px;
+    color: #fff;
+    font-family: 'VTF';
+}

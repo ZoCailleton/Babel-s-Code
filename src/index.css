@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'VG5000';
+  src: url('../src/fonts/vg5000/VG5000-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'VTF';
+  src: url('../src/fonts/vtf/vtf-misterpixel.regular.otf') format('opentype');
+}
+
+body {
+  background-image: url('./assets/grid.svg');
+  background-size: 100px;
+  background-position: center;
+  background-color: #000;
+  margin: 0;
+  font-family: 'VG5000', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  animation-name: grid;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+@keyframes grid {
+  to {
+    background-position: center 100px;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.wrapper.cursor-sword {
+  cursor: url('./assets/sword.svg'), auto;	
+}
+
+.heading-login {
+  font-size: 38px;
+  color: #15FFF1;
+  font-family: 'VTF';
+}
+
+.global-username {
+  background-color: #5A2727;
+  padding: 15px 25px;
+  font-size: 22px;
+  color: #E35C5E;
+  font-family: 'VTF';
+  word-wrap: break-word;
+}

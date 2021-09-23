@@ -1,0 +1,27 @@
+.send-container {
+    input[type="text"] {
+        background-image: url('../../assets/terminal.svg');
+        background-size: auto 30%;
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        background-color: transparent;
+        padding: 0 0 0 20px;
+        border: 0;
+        border-bottom: 1px solid #15FFF1;
+        font-size: 20px;
+        color: #15FFF1;
+        outline: none;
+        &::placeholder {
+            color: #15FFF1;
+        }
+    }
+    .btn-send {
+        background-image: url('../../assets/send.svg');
+        background-size: auto 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        border: 0;
+        border-bottom: 1px solid #15FFF1;
+    }
+}
