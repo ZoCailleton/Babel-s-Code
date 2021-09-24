@@ -1,10 +1,11 @@
+import { motion } from 'framer-motion'
 import './user.scss'
 
-const User = ({ id, name }) => {
+const User = ({ id, name, mode }) => {
     return (
-        <div key={id} className="box-user">
+        <motion.div drag={mode === 'Chaos'} key={id} className="box-user">
             <p>{name}</p>
-        </div>
+        </motion.div>
     )
 }
 

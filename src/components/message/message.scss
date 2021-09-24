@@ -5,6 +5,7 @@
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     transform-origin: center left;
+    user-select: none;
     &.hit {
         animation-name: hit;
     }

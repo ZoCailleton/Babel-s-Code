@@ -24,6 +24,7 @@ body {
   animation-iteration-count: infinite;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
+  overflow: hidden;
 }
 
 @keyframes grid {
@@ -44,6 +45,10 @@ code {
 
 .wrapper.cursor-sword {
   cursor: url('./assets/sword.svg'), auto;	
+}
+
+.wrapper.cursor-chaos {
+  cursor: url('./assets/chaos-mode.svg'), auto;	
 }
 
 .heading-login {

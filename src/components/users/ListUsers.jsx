@@ -54,7 +54,7 @@ const ListUsers = ({ socket, usernameGL, mode }) => {
     }, [])
 
     return (
-        <motion.div drag={mode === 'Chaos'}>
+        <motion.div drag={mode === 'Chaos'} dragConstraints={{ left: -100, bottom: 0, right: 1200 }}>
             <div className="global-username mt-10 flex gap-3">
                 <img src="/assets/user.svg" alt=""/>
                 <p style={{ transform: 'translateY(0.1em)' }} className="block">{usernameGL ? usernameGL : 'Anonymous'}</p>
@@ -68,7 +68,7 @@ const ListUsers = ({ socket, usernameGL, mode }) => {
                             return user.name !== 'Anonymous' && user.name !== ''
                         })
                         .map((user) => (
-                            <User key={user.id} name={user.name} />
+                            <User key={user.id} name={user.name} mode={mode} />
                         ))
                     }
                     {nbAno !== 0 && <User name={`Anonymous x${nbAno}`} />}

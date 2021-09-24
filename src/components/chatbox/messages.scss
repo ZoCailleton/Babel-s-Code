@@ -1,5 +1,11 @@
 .chatbox {
-    overscroll-behavior-y: contain;
+    max-height: 80vh;
+}
+
+@media screen and (max-width: 550px) {
+    .chatbox {
+        max-height: 60vh;
+    }
 }
 
 .chatbox::-webkit-scrollbar{

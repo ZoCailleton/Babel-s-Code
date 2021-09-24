@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import './message.scss'
 
 interface Props {
@@ -36,7 +37,7 @@ const Message = ({value, auteur, fromClient, mode, fnHurt, fnDestruction}: Props
     }
 
     return (
-        <div onClick={hit} className={`box-message ${lifepoints === 0 ? 'disabled' : ''} ${fromClient ? 'fromClient' : ''} ${animHurt ? 'hit' : ''}`}>
+        <motion.div onClick={hit} drag={mode === 'Chaos'} className={`box-message ${lifepoints === 0 ? 'disabled' : ''} ${fromClient ? 'fromClient' : ''} ${animHurt ? 'hit' : ''}`}>
             <img className="glitch" src="/assets/glitch-message.svg" alt=""/>
             <div className={`flex flex-col ${fromClient ? 'items-end' : 'items-start'}`}>
                 <div className="box-auteur-message">
@@ -52,7 +53,7 @@ const Message = ({value, auteur, fromClient, mode, fnHurt, fnDestruction}: Props
                     <div className="eye"></div>
                 </div>}
             </div>
-        </div>
+        </motion.div>
     )
 }
 

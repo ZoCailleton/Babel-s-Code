@@ -52,7 +52,7 @@ const Messages = ({ socket, mode, fnHurtMe }) => {
     useEffect(scrollToBottom, [messages])
 
     return (
-        <div style={{ maxHeight: '80vh' }} className={`chatbox m-auto pr-4 overflow-x-hidden overflow-y-auto`}>
+        <div className={`chatbox m-auto pr-4 overflow-x-hidden overflow-y-auto`}>
             {[...Object.values(messages)]
                 .sort((a, b) => a.time - b.time)
                 .filter((message) => {

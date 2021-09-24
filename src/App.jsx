@@ -13,7 +13,7 @@ import './App.css'
 function App() {
 
   const [intro] = useState(new Audio('/assets/audio/intro.mp3'))
-  const [homeAudio] = useState(new Audio('/assets/audio/together.mp3'))
+  const [audioGodMode] = useState(new Audio('/assets/audio/waspdance.mp3'))
   const [audioState, setAudioState] = useState(true)
 
   const [socket, setSocket] = useState(null)
@@ -30,21 +30,21 @@ function App() {
     intro.play()
   }
 
-  const audioHome = () => {
-    intro.pause()
-    homeAudio.play()
+  const toggleAudio = () => {
+    audioState ? intro.pause() : intro.play()
+    setAudioState(!audioState)
   }
 
-  const toggleAudio = () => {
-    audioState ? homeAudio.pause() : homeAudio.play()
-    setAudioState(!audioState)
+  const toggleAudioGodMode = () => {
+    intro.pause()
+    audioGodMode.play()
   }
 
   return (
     <Router>
       <Switch>
         <Route path="/general">
-          <Home fnAudio={audioHome} fnToggleAudio={toggleAudio} audioState={audioState} socket={socket} username={username} setUsername={setUsername} />
+          <Home fnToggleAudio={toggleAudio} audioState={audioState} socket={socket} username={username} setUsername={setUsername} fnAudioChaos={toggleAudioGodMode} />
         </Route>
         <Route path="/intro">
           <Intro fnAudio={startAudio} username={username} />
