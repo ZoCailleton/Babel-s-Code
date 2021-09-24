@@ -26,3 +26,9 @@
         top: -1px;
     }
 }
+
+@media screen and (max-width: 550px) {
+    .box-user {
+        max-width: none;
+    }
+}

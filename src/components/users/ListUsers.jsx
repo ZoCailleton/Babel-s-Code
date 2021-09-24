@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import User from './User'
 import './listUsers.scss'
 
-const ListUsers = ({ socket, usernameGL }) => {
+const ListUsers = ({ socket, usernameGL, mode }) => {
 
     const [users, setUsers] = useState([])
     const [nbAno, setNbAno] = useState(0)
@@ -53,10 +54,10 @@ const ListUsers = ({ socket, usernameGL }) => {
     }, [])
 
     return (
-        <>
-            <img src="/assets/audio.svg" alt="" />
+        <motion.div drag={mode === 'Chaos'}>
             <div className="global-username mt-10 flex gap-3">
-                <img src="/assets/user.svg" alt=""/> {usernameGL}
+                <img src="/assets/user.svg" alt=""/>
+                <p style={{ transform: 'translateY(0.1em)' }} className="block">{usernameGL ? usernameGL : 'Anonymous'}</p>
             </div>
             <p className="mt-6 heading-list-users">Users online :</p>
             <div className="list-users mt-4">
@@ -64,7 +65,7 @@ const ListUsers = ({ socket, usernameGL }) => {
                     {users
                         .sort((a, b) => a.name.localeCompare(b.name))
                         .filter(function(user) {
-                            return user.name !== 'Anonymous'
+                            return user.name !== 'Anonymous' && user.name !== ''
                         })
                         .map((user) => (
                             <User key={user.id} name={user.name} />
@@ -73,7 +74,7 @@ const ListUsers = ({ socket, usernameGL }) => {
                     {nbAno !== 0 && <User name={`Anonymous x${nbAno}`} />}
                 </div>
             </div>
-        </>
+        </motion.div>
     )
 }
 

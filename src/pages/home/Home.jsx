@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ListUsers from '../../components/users/ListUsers.jsx'
 import Messages from '../../components/chatbox/Messages.jsx'
 import Send from '../../components/chatbox/Send'
@@ -6,14 +6,20 @@ import Glitch from '../../components/glitch/Glitch.jsx'
 import Hitmarker from '../../components/hitmarker/Hitmarker.jsx'
 import BandeauName from '../../components/bandeauName/BandeauName'
 import Toolbox from '../../components/toolbox/Toolbox.jsx'
+import './home.scss'
 
-const Home = ({ socket, username, setUsername }) => {
+const Home = ({ socket, username, setUsername, fnAudio, fnToggleAudio, audioState }) => {
     
     const [glitch, setGlitch] = useState(false)
     const [hitmarker, setHitmarker] = useState(false)
     const [mode, setMode] = useState('Normal')
+    const [menuOpen, setMenuOpen] = useState(false)
 
     const [hurt] = useState(new Audio('/assets/audio/hurt-villager.mp3'))
+
+    useEffect(() => {
+        fnAudio()
+    }, [])
 
     const glitchAppear = () => {
         setGlitch(true)
@@ -37,12 +43,17 @@ const Home = ({ socket, username, setUsername }) => {
                 <>
                 {glitch && <Glitch />}
                 {hitmarker && <Hitmarker />}
-                <div className="w-full h-screen pt-10 flex">
-                    <div className="hidden md:block md:w-1/2 lg:w-1/4 pr-6">
-                        <ListUsers socket={socket} usernameGL={username} />
+                <div className="w-full h-screen flex relative">
+                    <div className={`menu-side ${menuOpen ? 'active' : ''} w-4/5 h-screen md:w-1/3 lg:w-1/4 bg-black md:bg-transparent pr-6 pt-10`}>
+                        <div className="flex justify-between">
+                            {audioState ? <img className="toggleAudio" onClick={fnToggleAudio} src="/assets/audio.svg" alt="Couper l'audio" />:<img className="toggleAudio" onClick={fnToggleAudio} src="/assets/audio-off.svg" alt="Rétablir l'audio" />}
+                            <img className="icon-burger hidden" onClick={() => setMenuOpen(false)} src="/assets/burger-menu.svg" alt="" />
+                        </div>
+                        <ListUsers socket={socket} usernameGL={username} mode={mode} />
                         <Toolbox setMode={setMode} />
                     </div>
-                    <div className="w-full md:w-1/2 lg:w-3/4">
+                    <div className="w-full md:w-2/3 lg:w-3/4 pt-10">
+                            <img className="icon-burger h-6 hidden mb-8" onClick={() => setMenuOpen(true)} src="/assets/burger-menu-close.svg" alt="" />
                         <Messages socket={socket} mode={mode} fnHurtMe={hitmarkerAppear} />
                         <Send glitchAppear={glitchAppear} socket={socket} />
                     </div>

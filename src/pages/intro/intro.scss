@@ -11,10 +11,11 @@
 .sentence-intro {
     width: 100%;
     max-width: 500px;
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 22px;
     color: #15FFF1;
     text-align: left;
+    line-height: 1em;
     &:nth-child(3) {
         margin-top: 15px;
     }
@@ -31,4 +32,7 @@
     font-size: 24px;
     color: #E35C5E;
     font-family: 'VTF';
+    &:hover {
+        background-color: #AA3838;
+    }
 }

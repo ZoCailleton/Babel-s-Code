@@ -12,6 +12,10 @@ import './App.css'
 
 function App() {
 
+  const [intro] = useState(new Audio('/assets/audio/intro.mp3'))
+  const [homeAudio] = useState(new Audio('/assets/audio/together.mp3'))
+  const [audioState, setAudioState] = useState(true)
+
   const [socket, setSocket] = useState(null)
   const [username, setUsername] = useState('')
 
@@ -21,15 +25,29 @@ function App() {
       setSocket(newSocket)
       return () => newSocket.close()
   }, [setSocket])
+  
+  const startAudio = () => {
+    intro.play()
+  }
+
+  const audioHome = () => {
+    intro.pause()
+    homeAudio.play()
+  }
+
+  const toggleAudio = () => {
+    audioState ? homeAudio.pause() : homeAudio.play()
+    setAudioState(!audioState)
+  }
 
   return (
     <Router>
       <Switch>
         <Route path="/general">
-          <Home socket={socket} username={username} setUsername={setUsername} />
+          <Home fnAudio={audioHome} fnToggleAudio={toggleAudio} audioState={audioState} socket={socket} username={username} setUsername={setUsername} />
         </Route>
         <Route path="/intro">
-          <Intro username={username} />
+          <Intro fnAudio={startAudio} username={username} />
         </Route>
         <Route exact path="/">
           <Login socket={socket} username={username} setUsername={setUsername} />

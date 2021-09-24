@@ -4,6 +4,12 @@
     overflow-y: auto;
 }
 
+@media screen and (max-width: 550px) {
+    .list-users {
+        height: calc(60vh);
+    }
+}
+
 .list-users::-webkit-scrollbar{
     width: 11px;
     height: 11px;
@@ -23,6 +29,6 @@
 
 .heading-list-users {
     font-size: 28px;
-    color: #fff;
+    color: #15FFF1;
     font-family: 'VTF';
 }

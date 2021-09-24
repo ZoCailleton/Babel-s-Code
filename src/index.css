@@ -55,8 +55,23 @@ code {
 .global-username {
   background-color: #5A2727;
   padding: 15px 25px;
+  position: relative;
   font-size: 22px;
   color: #E35C5E;
   font-family: 'VTF';
   word-wrap: break-word;
+}
+
+.global-username::after {
+  content: '';
+  width: 25px;
+  height: 25px;
+  background-image: url('./assets/side-username.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
 }

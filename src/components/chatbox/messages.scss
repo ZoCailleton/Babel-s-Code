@@ -1,3 +1,7 @@
+.chatbox {
+    overscroll-behavior-y: contain;
+}
+
 .chatbox::-webkit-scrollbar{
     width: 11px;
     height: 11px;

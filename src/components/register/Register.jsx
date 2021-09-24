@@ -9,6 +9,7 @@ const Register = ({ socket, setUsernameGL }) => {
     const history = useHistory();
 
     const [username, setUsername] = useState('');
+    const [goValid, setGoValid] = useState(false)
 
     const handleRegister = () => {
         if(username !== null & username !== '') {
@@ -20,6 +21,11 @@ const Register = ({ socket, setUsernameGL }) => {
         }
     }
 
+    const handleChange = e => {
+        e.target.value.length > 0 ? setGoValid(true) : setGoValid(false)
+        setUsername(e.target.value)
+    }
+
     const handleWrite = e => {
         if(e.key === 'Enter') {
             handleRegister()
@@ -29,8 +35,8 @@ const Register = ({ socket, setUsernameGL }) => {
 
     return (
         <div>
-            <input className="input-login w-full bg-gray-100 px-4 py-3" onChange={e => setUsername(e.target.value)} onKeyDown={handleWrite} value={username} type="text" placeholder="Entrez votre nom..." />
-            <input onClick={handleRegister} className="btn-login" type="submit" value="Let's go" />
+            <input className="input-login w-full bg-gray-100 px-4 py-3" onChange={handleChange} onKeyDown={handleWrite} value={username} type="text" placeholder="Entrez votre nom..." />
+            <input onClick={handleRegister} className={`btn-login ${goValid ? 'active' : ''}`} type="submit" value="Let's go" />
         </div>
     )
 }
